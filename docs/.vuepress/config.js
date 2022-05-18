@@ -1,3 +1,76 @@
+
+const fs = require('fs');
+const path = require('path');
+const markdownIt = require("markdown-it");
+const meta = require("markdown-it-meta");
+
+const rootPath = path.join(__dirname, '../');
+
+function genderRoute({ title, path, children, filepath }) {
+    if (children && children.length) {
+        return {
+            title,
+            children
+        }
+    }
+    if (filepath) {
+        const content = fs.readFileSync(filepath, 'utf-8');
+        const md = new markdownIt();
+        md.use(meta);
+        md.render(content);
+        if (md.meta.hide) return;
+    }
+    return {
+        title,
+        path
+    }
+}
+
+const roll = (base, parentFilename) => {
+    const files = fs
+        .readdirSync(base)
+        .filter(item => !/^\./.test(item));
+    const dirs = files.map(filename => {
+        const filepath = path.join(base, filename);
+        const fileStat = fs.statSync(filepath);
+        if (fileStat.isDirectory()) {
+            let children = roll(filepath, filename).filter(item => !!item);
+            if (!children.length) return;
+            if (children.some(item => item === 'README.md')) {
+                const basepath = `${path.join(base, filename)}`;
+                return genderRoute({
+                    title: filename,
+                    filepath: `${basepath}/README.md`,
+                    path: `/${filepath.replace(rootPath, '')}/`
+                })
+            }
+            return genderRoute({
+                title: filename,
+                children
+            })
+        } else if (filename !== 'README.md') {
+            const basepath = `${path.join(base, filename)}`;
+            return genderRoute({
+                title: parentFilename,
+                filepath: basepath,
+                path: `/${filepath.replace(rootPath, '')}/`
+            })
+        } else {
+            if (parentFilename) {
+                return 'README.md';
+            } else {
+                return genderRoute({
+                    title: '关于我',
+                    path: '/'
+                });
+            }
+        }
+    })
+    return dirs;
+}
+
+const sidebar = roll(rootPath).filter(item => !!item);
+
 module.exports = {
     // 站点配置
     lang: 'zh-CN',
@@ -10,34 +83,12 @@ module.exports = {
     // 主题和它的配置
     theme: '@vuepress/theme-default',
     themeConfig: {
-        displayAllHeaders: true, // 默认值：false
         smoothScroll: true,
         search: false,
         nav: [
             { text: 'Github', link: 'https://github.com/wangzhenxi' },
         ],
-        sidebar: [
-            {
-                title: '关于我',
-                path: '/',
-            },
-            {
-                title: 'Javascript',
-                collapsable: false,
-                sidebarDepth: 2,    // 可选的, 默认值是 1
-                initialOpenGroupIndex: -1, // 可选的, 默认值是 0
-                children: [
-                    {
-                        path: '/javascript/TODO',
-                        title: 'TODO'
-                    }
-                ]
-            },
-            {
-                title: '友情链接',
-                path: '/friends/',
-            }
-        ],
+        sidebar,
         lastUpdated: 'Last Updated', // string | boolean
     },
 }
