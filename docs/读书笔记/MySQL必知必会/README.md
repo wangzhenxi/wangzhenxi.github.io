@@ -385,7 +385,7 @@ REVOKE SELECT ON test.* FROM tester; # 删除权限
 
 #### 权限表
 
-![c728eac606a79231f2d7681b24a03d73.jpeg](evernotecid://56CF36E1-12D1-4A55-B84F-B1B10BD7B8DD/appyinxiangcom/23743638/ENResource/p737)
+![](image/2022-05-18-08-47-05.png)
 
 ## 基础函数
 
