@@ -385,7 +385,7 @@ REVOKE SELECT ON test.* FROM tester; # 删除权限
 
 #### 权限表
 
-![](image/2022-05-18-08-47-05.png)
+![](./image/2022-05-18-08-47-05.png)
 
 ## 基础函数
 
