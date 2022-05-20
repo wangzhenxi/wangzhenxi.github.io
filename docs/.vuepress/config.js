@@ -79,6 +79,12 @@ module.exports = {
     head: [
         ['link', { rel: 'shortcut icon', href: 'https://cdn.joshwong.cn/josh.ico' }]
     ],
+    plugins: [
+        // 百度统计
+        ['vuepress-plugin-baidu-tongji-analytics', {
+            key: '78bf3c2cd36fd85e0d02fe895c4ee964',
+        }]
+    ],
 
     // 主题和它的配置
     theme: '@vuepress/theme-default',
