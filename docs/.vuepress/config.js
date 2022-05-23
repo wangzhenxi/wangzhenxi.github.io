@@ -91,8 +91,8 @@ module.exports = {
             platform: 'github',
 
             // 其他的 Vssue 配置
-            owner: 'joshwong',
-            repo: 'https://github.com/wangzhenxi/wangzhenxi.github.io',
+            owner: 'wangzhenxi',
+            repo: 'wangzhenxi.github.io',
             clientId: '0deb5b15f58c92d3fcf4',
             clientSecret: '97ffc1e39e11dbccb1cf481b58b435e2dc3b87cc',
         }],
