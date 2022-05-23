@@ -7,9 +7,7 @@ next: false
 - 掘金： [josh](https://juejin.im/user/2242659449580317)
 - email： [im@joshwong.cn](mailto:im@joshwong.cn)
 
-
-
-
+<Vssue :title="$title" />
 
 ---
 

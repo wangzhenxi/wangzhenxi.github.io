@@ -83,7 +83,19 @@ module.exports = {
         // 百度统计
         ['vuepress-plugin-baidu-tongji-analytics', {
             key: '78bf3c2cd36fd85e0d02fe895c4ee964',
-        }]
+        }],
+
+        // 评论
+        ['@vssue/vuepress-plugin-vssue', {
+            // 设置 `platform` 而不是 `api`
+            platform: 'github',
+
+            // 其他的 Vssue 配置
+            owner: 'joshwong',
+            repo: 'https://github.com/wangzhenxi/wangzhenxi.github.io',
+            clientId: '0deb5b15f58c92d3fcf4',
+            clientSecret: '97ffc1e39e11dbccb1cf481b58b435e2dc3b87cc',
+        }],
     ],
 
     // 主题和它的配置
