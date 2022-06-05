@@ -273,9 +273,9 @@ ONBOOT=yes # 开机自动打开网卡
 NAME=loopback # 网卡名称
 ```
 
-### 网络操作
+### 查看端口进程
 
-- netstat -anlpt | grep 5000 查看5000端口
+- lsof -i:port
 
 ## VNC远程连接
 
