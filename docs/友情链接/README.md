@@ -1,4 +1,4 @@
-- [Josh](https://www.joshwong.cn/)
+- [Josh](https://www.wangzhenxi.com/)
 - [Nooldey](http://zhuweisheng.com.cn/)
 - [Kevin](https://www.willwuwei.com/)
 - [曾小乱](https://zengxiaoluan.com/)
