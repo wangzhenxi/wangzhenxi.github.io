@@ -82,7 +82,7 @@ module.exports = {
     plugins: [
         // 百度统计
         ['vuepress-plugin-baidu-tongji-analytics', {
-            key: '78bf3c2cd36fd85e0d02fe895c4ee964',
+            key: '05011c0833edb057b092ef78bbaf7ff5',
         }],
 
         // 评论
