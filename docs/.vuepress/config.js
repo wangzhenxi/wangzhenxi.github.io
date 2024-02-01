@@ -96,6 +96,11 @@ module.exports = {
             clientId: '0deb5b15f58c92d3fcf4',
             clientSecret: '97ffc1e39e11dbccb1cf481b58b435e2dc3b87cc',
         }],
+
+        // 站点地图
+        ['sitemap', {
+            hostname: 'https://www.wangzhenxi.com'
+        }]
     ],
 
     // 主题和它的配置
