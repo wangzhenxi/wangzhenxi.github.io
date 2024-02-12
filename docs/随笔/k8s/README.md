@@ -228,11 +228,11 @@ metadata:
 spec:
   tls: # 证书
   - hosts:
-    - www.joshwong.cn # 证书域名
+    - www.wangzhenxi.com # 证书域名
     secretName: xxx-secret # 密钥名称
   containers:
   rules:                      # Ingress 中定义 L7 路由规则
-  - host: www.joshwong.cn   # 根据 virtual hostname 进行路由（请使用您自己的域名）
+  - host: www.wangzhenxi.com   # 根据 virtual hostname 进行路由（请使用您自己的域名）
     http:
       paths:                  # 按路径进行路由
       - path: /
@@ -253,7 +253,7 @@ spec:
 
 ```sh
 # 通过命令创建
-kubectl create secret tls blog-11020-secret --key blog.joshwong.cn.key --cert blog.joshwong.cn_bundle.crt 
+kubectl create secret tls blog-11020-secret --key blog.wangzhenxi.com.key --cert blog.wangzhenxi.com_bundle.crt 
 ```
 
 ```sh

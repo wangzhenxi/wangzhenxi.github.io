@@ -150,7 +150,7 @@ location ~ .*\.(htm|html)$ {
 
 ```nginx
 location ~ .*\.(htm|html)$ {
-    add_header Access-Control-Allow-Origin http://www.joshwong.cn;
+    add_header Access-Control-Allow-Origin http://www.wangzhenxi.com;
     add_header Access-Control-Methods GET,POST,PUT,DELETE,OPTIONS;
 }
 ```
@@ -180,18 +180,18 @@ http协议不安全，传输过程中会被盗用、信息泄露，被劫取、�
 ```nginx
 server {
     listen       80;
-    server_name  www.joshwong.cn;
+    server_name  www.wangzhenxi.com;
     rewrite ^(.*)$  https://$server_name$1 permanent;
 }
 
 server {
     listen 443;
     ssl on;
-    server_name www.joshwong.cn;
+    server_name www.wangzhenxi.com;
     #证书文件
-    ssl_certificate     /root/git/server_base/cert/www.joshwong.cn_bundle.crt;
+    ssl_certificate     /root/git/server_base/cert/www.wangzhenxi.com_bundle.crt;
     #私钥文件
-    ssl_certificate_key /root/git/server_base/cert/www.joshwong.cn.key;
+    ssl_certificate_key /root/git/server_base/cert/www.wangzhenxi.com.key;
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers         HIGH:!aNULL:!MD5;
     ssl_session_timeout  5m;

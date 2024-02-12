@@ -191,7 +191,7 @@ services:
         expose: # 服务暴露端口
             - "3000"
         extra_hosts: # 指定host名称映射
-            - "joshwong.cn:8.8.8.8"
+            - "wangzhenxi.com:8.8.8.8"
 ```
 
 环境变量文件env_file

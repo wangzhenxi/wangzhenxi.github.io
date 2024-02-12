@@ -77,7 +77,6 @@ module.exports = {
     title: 'Joshwong | 王震西',
     description: '记录点滴',
     head: [
-        ['link', { rel: 'shortcut icon', href: 'https://cdn.joshwong.cn/josh.ico' }]
     ],
     plugins: [
         // 百度统计
