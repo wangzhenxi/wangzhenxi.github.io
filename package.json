@@ -20,8 +20,7 @@
   "devDependencies": {
     "markdown-it": "^13.0.1",
     "markdown-it-meta": "^0.0.1",
-    "transliteration": "^2.2.0",
-    "vuepress": "^1.9.7"
+    "vuepress": "^1.9.10"
   },
   "dependencies": {
     "@vssue/api-github-v3": "^1.4.7",

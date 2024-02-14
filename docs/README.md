@@ -1,5 +1,6 @@
 ---
 next: false
+title: '关于我'
 ---
 
 - github： [wangzhenxi](https://github.com/wangzhenxi)
