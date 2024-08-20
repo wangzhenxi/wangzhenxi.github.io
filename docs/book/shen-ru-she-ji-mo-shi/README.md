@@ -1128,6 +1128,419 @@ editor.restore(caretaker.getMemento(0));
 console.log(editor.getContent()); // 输出: Hello,
 ```
 
+### 6. 观察者 (Observer)
+
+它定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。当主题对象的状态发生变化时，会通知所有观察者对象，使它们能够自动更新。
+
+```javascript
+// 天气站类 (主题)
+class WeatherStation {
+  constructor() {
+    this.temperature = 0;
+    this.observers = [];
+  }
+
+  // 注册观察者
+  registerObserver(observer) {
+    this.observers.push(observer);
+  }
+
+  // 注销观察者
+  removeObserver(observer) {
+    this.observers = this.observers.filter(obs => obs !== observer);
+  }
+
+  // 通知所有观察者
+  notifyObservers() {
+    this.observers.forEach(observer => observer.update(this.temperature));
+  }
+
+  // 设置温度并通知观察者
+  setTemperature(temp) {
+    console.log(`WeatherStation: New temperature is ${temp}`);
+    this.temperature = temp;
+    this.notifyObservers();
+  }
+}
+
+// 显示器类 (观察者)
+class Display {
+  constructor(name) {
+    this.name = name;
+  }
+
+  // 更新显示器的温度
+  update(temperature) {
+    console.log(`${this.name} display: ${temperature} degrees`);
+  }
+}
+
+// 创建天气站
+const weatherStation = new WeatherStation();
+
+// 创建显示器
+const display1 = new Display('Display1');
+const display2 = new Display('Display2');
+const display3 = new Display('Display3');
+
+// 注册显示器到天气站
+weatherStation.registerObserver(display1);
+weatherStation.registerObserver(display2);
+weatherStation.registerObserver(display3);
+
+// 设置温度并通知观察者
+weatherStation.setTemperature(25); // 输出: WeatherStation: New temperature is 25
+                                    // 输出: Display1 display: 25 degrees
+                                    // 输出: Display2 display: 25 degrees
+                                    // 输出: Display3 display: 25 degrees
+
+// 注销一个显示器
+weatherStation.removeObserver(display2);
+
+// 设置温度并通知观察者
+weatherStation.setTemperature(30); // 输出: WeatherStation: New temperature is 30
+                                    // 输出: Display1 display: 30 degrees
+                                    // 输出: Display3 display: 30 degrees
+```
+
+### 7. 状态 (State)
+
+它允许对象在内部状态改变时改变其行为。状态模式将对象的行为封装在不同的状态对象中，使对象在运行时可以根据状态的变化而改变其行为。
+
+```javascript
+// 电灯类 (上下文)
+class Light {
+  constructor() {
+    this.state = new OffState(this); // 初始状态为关
+  }
+
+  setState(state) {
+    this.state = state;
+  }
+
+  pressButton() {
+    this.state.pressButton();
+  }
+}
+
+// 状态接口
+class State {
+  constructor(light) {
+    this.light = light;
+  }
+
+  pressButton() {
+    throw new Error('pressButton method should be implemented');
+  }
+}
+
+// 开状态类
+class OnState extends State {
+  pressButton() {
+    console.log('Light is turning off...');
+    this.light.setState(new OffState(this.light));
+  }
+}
+
+// 关状态类
+class OffState extends State {
+  pressButton() {
+    console.log('Light is turning on...');
+    this.light.setState(new OnState(this.light));
+  }
+}
+
+// 创建电灯对象
+const light = new Light();
+
+// 按下按钮
+light.pressButton(); // 输出: Light is turning on...
+light.pressButton(); // 输出: Light is turning off...
+light.pressButton(); // 输出: Light is turning on...
+light.pressButton(); // 输出: Light is turning off...
+```
+
+### 8. 策略 (Strategy)
+
+它定义了一系列算法，并将每个算法封装起来，使它们可以互相替换，从而使算法的变化不会影响到使用算法的客户。
+
+```javascript
+// 支付策略接口
+class PaymentStrategy {
+  pay(amount) {
+    throw new Error('pay method should be implemented');
+  }
+}
+
+// 信用卡支付策略类
+class CreditCardPaymentStrategy extends PaymentStrategy {
+  constructor(cardNumber, cardName) {
+    super();
+    this.cardNumber = cardNumber;
+    this.cardName = cardName;
+  }
+
+  pay(amount) {
+    console.log(`Paid ${amount} using Credit Card ${this.cardName}`);
+  }
+}
+
+// PayPal支付策略类
+class PayPalPaymentStrategy extends PaymentStrategy {
+  constructor(email) {
+    super();
+    this.email = email;
+  }
+
+  pay(amount) {
+    console.log(`Paid ${amount} using PayPal with ${this.email}`);
+  }
+}
+
+// 比特币支付策略类
+class BitcoinPaymentStrategy extends PaymentStrategy {
+  constructor(walletAddress) {
+    super();
+    this.walletAddress = walletAddress;
+  }
+
+  pay(amount) {
+    console.log(`Paid ${amount} using Bitcoin to wallet ${this.walletAddress}`);
+  }
+}
+
+// 支付上下文类
+class PaymentContext {
+  constructor(strategy) {
+    this.strategy = strategy;
+  }
+
+  setStrategy(strategy) {
+    this.strategy = strategy;
+  }
+
+  pay(amount) {
+    this.strategy.pay(amount);
+  }
+}
+
+// 创建支付上下文
+const paymentContext = new PaymentContext(new CreditCardPaymentStrategy('1234-5678-9876-5432', 'John Doe'));
+
+// 使用信用卡支付
+paymentContext.pay(100); // 输出: Paid 100 using Credit Card John Doe
+
+// 更改支付方式为PayPal
+paymentContext.setStrategy(new PayPalPaymentStrategy('john.doe@example.com'));
+paymentContext.pay(200); // 输出: Paid 200 using PayPal with john.doe@example.com
+
+// 更改支付方式为比特币
+paymentContext.setStrategy(new BitcoinPaymentStrategy('1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa'));
+paymentContext.pay(300); // 输出: Paid 300 using Bitcoin to wallet 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa
+```
+
+### 9. 模板方法 (Template Method)
+
+它定义了一个操作中的算法的骨架，而将一些步骤延迟到子类中。模板方法模式使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。
+
+```javascript
+// 饮料类 (抽象类)
+class Beverage {
+  prepareBeverage() {
+    this.boilWater();
+    this.brew();
+    this.pourInCup();
+    this.addCondiments();
+  }
+
+  boilWater() {
+    console.log('Boiling water...');
+  }
+
+  brew() {
+    throw new Error('brew method should be implemented');
+  }
+
+  pourInCup() {
+    console.log('Pouring in cup...');
+  }
+
+  addCondiments() {
+    throw new Error('addCondiments method should be implemented');
+  }
+}
+
+// 茶类
+class Tea extends Beverage {
+  brew() {
+    console.log('Steeping the tea...');
+  }
+
+  addCondiments() {
+    console.log('Adding lemon...');
+  }
+}
+
+// 咖啡类
+class Coffee extends Beverage {
+  brew() {
+    console.log('Dripping coffee through filter...');
+  }
+
+  addCondiments() {
+    console.log('Adding sugar and milk...');
+  }
+}
+
+// 创建茶对象并制作茶
+const tea = new Tea();
+console.log('Making tea:');
+tea.prepareBeverage();
+// 输出:
+// Making tea:
+// Boiling water...
+// Steeping the tea...
+// Pouring in cup...
+// Adding lemon...
+
+// 创建咖啡对象并制作咖啡
+const coffee = new Coffee();
+console.log('Making coffee:');
+coffee.prepareBeverage();
+// 输出:
+// Making coffee:
+// Boiling water...
+// Dripping coffee through filter...
+// Pouring in cup...
+// Adding sugar and milk...
+```
+
+### 10. 访问者 (Visitor)
+
+它将操作的定义与操作的对象结构分离。通过这种方式，操作可以在不改变对象结构的前提下被添加到对象结构中。
+
+```javascript
+// 文件系统元素类 (抽象类)
+class FileSystemElement {
+  accept(visitor) {
+    throw new Error('accept method should be implemented');
+  }
+}
+
+// 文件类
+class File extends FileSystemElement {
+  constructor(name, size) {
+    super();
+    this.name = name;
+    this.size = size;
+  }
+
+  accept(visitor) {
+    visitor.visitFile(this);
+  }
+}
+
+// 文件夹类
+class Directory extends FileSystemElement {
+  constructor(name) {
+    super();
+    this.name = name;
+    this.children = [];
+  }
+
+  add(element) {
+    this.children.push(element);
+  }
+
+  accept(visitor) {
+    visitor.visitDirectory(this);
+  }
+}
+
+// 访问者接口
+class Visitor {
+  visitFile(file) {
+    throw new Error('visitFile method should be implemented');
+  }
+
+  visitDirectory(directory) {
+    throw new Error('visitDirectory method should be implemented');
+  }
+}
+
+// 具体访问者类: 计算总大小
+class SizeCalculator extends Visitor {
+  constructor() {
+    super();
+    this.totalSize = 0;
+  }
+
+  visitFile(file) {
+    this.totalSize += file.size;
+  }
+
+  visitDirectory(directory) {
+    directory.children.forEach(child => child.accept(this));
+  }
+
+  getTotalSize() {
+    return this.totalSize;
+  }
+}
+
+// 具体访问者类: 打印结构
+class StructurePrinter extends Visitor {
+  constructor() {
+    super();
+    this.structure = '';
+    this.indentation = '';
+  }
+
+  visitFile(file) {
+    this.structure += `${this.indentation}- ${file.name} (${file.size} KB)\n`;
+  }
+
+  visitDirectory(directory) {
+    this.structure += `${this.indentation}+ ${directory.name}\n`;
+    this.indentation += '  ';
+    directory.children.forEach(child => child.accept(this));
+    this.indentation = this.indentation.slice(0, -2);
+  }
+
+  getStructure() {
+    return this.structure;
+  }
+}
+
+// 创建文件系统结构
+const root = new Directory('root');
+const file1 = new File('file1.txt', 100);
+const file2 = new File('file2.txt', 200);
+const subDir = new Directory('subDir');
+const file3 = new File('file3.txt', 300);
+
+root.add(file1);
+root.add(file2);
+root.add(subDir);
+subDir.add(file3);
+
+// 计算总大小
+const sizeCalculator = new SizeCalculator();
+root.accept(sizeCalculator);
+console.log(`Total size: ${sizeCalculator.getTotalSize()} KB`); // 输出: Total size: 600 KB
+
+// 打印结构
+const structurePrinter = new StructurePrinter();
+root.accept(structurePrinter);
+console.log('File system structure:\n' + structurePrinter.getStructure());
+// 输出:
+// File system structure:
+// + root
+//   - file1.txt (100 KB)
+//   - file2.txt (200 KB)
+//   + subDir
+//     - file3.txt (300 KB)
+```
 
 ## 参考文档
 
