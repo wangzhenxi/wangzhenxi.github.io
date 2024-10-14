@@ -73,7 +73,7 @@ title: '架构简洁之道'
 
 REP和CCP属于粘合性，CRP属于排除性原则，架构师需根据不同的研发成本和成熟度上，在三个原则间做取舍
 
-![alt text](./image/组件聚合原则的张力图.png)
+![alt text](./image/juheyuanze.png)
 
 ### 组件耦合
 
