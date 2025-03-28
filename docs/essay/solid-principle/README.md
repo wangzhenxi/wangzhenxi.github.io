@@ -215,19 +215,19 @@ console.log(userManager.getUserReport('detailed'));
 ```ts
 // prompt: 对照上面的例子，使用开闭原则的例子，尽可能简单易懂
 // 报表生成器接口
-abstract class ReportGenerator {
-    abstract generate(users: { name: string; email: string; registerDate: string }[]): string;
+interface ReportGenerator {
+    generate(users: { name: string; email: string; registerDate: string }[]): string;
 }
 
 // 基本报表生成器
-class BasicReportGenerator extends ReportGenerator {
+class BasicReportGenerator implements ReportGenerator {
     generate(users: { name: string; email: string; registerDate: string }[]): string {
         return users.map(user => `用户: ${user.name}`).join('\n');
     }
 }
 
 // 详细报表生成器
-class DetailedReportGenerator extends ReportGenerator {
+class DetailedReportGenerator implements ReportGenerator {
     generate(users: { name: string; email: string; registerDate: string }[]): string {
         return users.map(user => `用户: ${user.name}, 邮箱: ${user.email}, 注册时间: ${user.registerDate}`).join('\n');
     }
