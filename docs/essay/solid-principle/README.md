@@ -23,8 +23,6 @@ title: 'SOLID原则'
 
 ## 使用和不使用SOLID原则的代码，有什么不一样？
 
-这里我们采用一个业务场景： 录入多个用户，生成不同的报表，发送邮件通知用户。
-
 ### 单一功能原则（SRP： Single Responsibility Principle）
 
 一个对象（类、方法等）应该**只负责单一的职责**。如果一个对象承担了过多的职责，那么在修改其中一个功能时，可能会影响到其他功能，导致代码难以维护和测试。
@@ -437,3 +435,71 @@ userManager.addUser({ name: 'John' });
 
 ### 依赖反转原则（DIP： Dependency Inversion Principle）
 
+高层模块不应该依赖于底层模块，两者都应该**依赖于抽象**。
+
+#### 反例
+
+```ts
+// prompt: 按用户维度，不使用依赖反转原则的例子，尽可能简单易懂
+// 底层模块 - 邮件服务
+class EmailService {
+    sendEmail(to: string, content: string) {
+        console.log(`向 ${to} 发送邮件: ${content}`);
+    }
+}
+
+// 高层模块 - 用户管理
+class UserManager {
+    private emailService = new EmailService(); // 直接依赖具体实现
+
+    notifyUser(email: string, message: string) {
+        this.emailService.sendEmail(email, message);
+    }
+}
+
+// 使用示例
+const userManager = new UserManager();
+userManager.notifyUser('john@example.com', '欢迎注册!');
+
+// 问题:
+// 1. UserManager直接依赖于EmailService的具体实现，违反了依赖反转原则。
+// 2. 如果需要更换邮件服务实现，比如改用第三方邮件服务，需要修改UserManager的代码。
+// 3. 高层模块和底层模块耦合度高，难以扩展和测试。
+```
+
+#### 正例
+
+```ts
+// prompt: 对照上面的例子，使用依赖反转原则的例子，尽可能简单易懂
+// 定义抽象接口
+interface EmailService {
+    sendEmail(to: string, content: string): void;
+}
+
+// 实现具体的邮件服务
+// 底层模块依赖于抽象接口
+class BasicEmailService implements EmailService {
+    sendEmail(to: string, content: string) {
+        console.log(`向 ${to} 发送邮件: ${content}`);
+    }
+}
+
+// 高层模块依赖于抽象接口
+class UserManager {
+    constructor(private emailService: EmailService) {}
+
+    notifyUser(email: string, message: string) {
+        this.emailService.sendEmail(email, message);
+    }
+}
+
+// 使用示例
+const emailService = new BasicEmailService();
+const userManager = new UserManager(emailService);
+userManager.notifyUser('john@example.com', '欢迎注册!');
+
+// 好处:
+// 1. UserManager依赖于EmailService接口，而不是具体实现，符合依赖反转原则。
+// 2. 更换邮件服务实现时，只需提供新的实现类，而无需修改UserManager代码。
+// 3. 高层模块和底层模块解耦，代码更易于扩展和测试。
+```
