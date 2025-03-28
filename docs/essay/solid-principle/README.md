@@ -12,7 +12,6 @@ title: 'SOLID原则'
 - 如何用好SOLID原则？
 - 在DDD中如何使用SOLID原则？
 - 如何练习SOLID原则？
-- TODO： 例子改TS
 
 ## 什么是SOLID原则？
 
@@ -32,54 +31,52 @@ title: 'SOLID原则'
 
 #### 反例
 
-```js
+```ts
 // prompt: 按用户维度，不使用单一功能原则的例子，尽可能简单易懂
 // 用户管理类 - 负责用户管理、报表生成、邮件发送、数据验证、数据库操作
 class UserManager {
-  constructor() {
-    this.users = [];
-  }
+    private users: { name: string; email: string; registerDate: string }[] = [];
 
-  addUser(user) {
-    // 添加用户
-    this.users.push(user);
-  }
-
-  generateReport() {
-    // 生成报表
-    let report = '';
-    for(const user of this.users) {
-      report += `用户 ${user.name} 的信息:\n`;
-      report += `邮箱: ${user.email}\n`;
-      report += `注册时间: ${user.registerDate}\n`;
+    addUser(user: { name: string; email: string; registerDate: string }) {
+        // 添加用户
+        this.users.push(user);
     }
-    return report;
-  }
 
-  sendEmail(user, content) {
-    // 发送邮件
-    console.log(`向 ${user.email} 发送邮件: ${content}`);
-  }
-
-  validateUserData(user) {
-    // 验证用户数据
-    if(!user.name || !user.email) {
-      throw new Error('用户数据不完整');
+    generateReport(): string {
+        // 生成报表
+        let report = '';
+        for (const user of this.users) {
+            report += `用户 ${user.name} 的信息:\n`;
+            report += `邮箱: ${user.email}\n`;
+            report += `注册时间: ${user.registerDate}\n`;
+        }
+        return report;
     }
-  }
 
-  saveToDatabase(user) {
-    // 保存到数据库
-    console.log(`保存用户 ${user.name} 到数据库`);
-  }
+    sendEmail(user: { email: string }, content: string) {
+        // 发送邮件
+        console.log(`向 ${user.email} 发送邮件: ${content}`);
+    }
+
+    validateUserData(user: { name?: string; email?: string }) {
+        // 验证用户数据
+        if (!user.name || !user.email) {
+            throw new Error('用户数据不完整');
+        }
+    }
+
+    saveToDatabase(user: { name: string }) {
+        // 保存到数据库
+        console.log(`保存用户 ${user.name} 到数据库`);
+    }
 }
 
 // 使用示例
 const userManager = new UserManager();
 const user = {
-  name: 'John',
-  email: 'john@example.com',
-  registerDate: '2024-03-27'
+    name: 'John',
+    email: 'john@example.com',
+    registerDate: '2024-03-27'
 };
 
 userManager.addUser(user);
@@ -97,57 +94,55 @@ console.log(userManager.generateReport());
 
 #### 正例
 
-```js
+```ts
 // prompt： 对照上面的例子，使用单一功能原则的例子，尽可能简单易懂
 // 用户管理类 - 只负责用户的基本操作
 class UserManager {
-  constructor() {
-    this.users = [];
-  }
+    private users: { name: string; email: string; registerDate: string }[] = [];
 
-  addUser(user) {
-    this.users.push(user);
-  }
+    addUser(user: { name: string; email: string; registerDate: string }) {
+        this.users.push(user);
+    }
 
-  getUser(email) {
-    return this.users.find(user => user.email === email);
-  }
+    getUser(email: string) {
+        return this.users.find(user => user.email === email);
+    }
 }
 
 // 用户验证类 - 只负责验证用户数据
 class UserValidator {
-  validateUser(user) {
-    if (!user.name || !user.email) {
-      throw new Error('用户数据不完整');
+    validateUser(user: { name?: string; email?: string }) {
+        if (!user.name || !user.email) {
+            throw new Error('用户数据不完整');
+        }
     }
-  }
 }
 
 // 用户存储类 - 只负责数据库操作
 class UserStorage {
-  saveUser(user) {
-    console.log(`保存用户 ${user.name} 到数据库`);
-  }
+    saveUser(user: { name: string }) {
+        console.log(`保存用户 ${user.name} 到数据库`);
+    }
 }
 
 // 报表生成类 - 只负责生成报表
 class ReportGenerator {
-  generateUserReport(users) {
-    let report = '用户报表:\n';
-    for (const user of users) {
-      report += `用户 ${user.name} 的信息:\n`;
-      report += `邮箱: ${user.email}\n`;
-      report += `注册时间: ${user.registerDate}\n`;
+    generateUserReport(users: { name: string; email: string; registerDate: string }[]): string {
+        let report = '用户报表:\n';
+        for (const user of users) {
+            report += `用户 ${user.name} 的信息:\n`;
+            report += `邮箱: ${user.email}\n`;
+            report += `注册时间: ${user.registerDate}\n`;
+        }
+        return report;
     }
-    return report;
-  }
 }
 
 // 邮件服务类 - 只负责发送邮件
 class EmailService {
-  sendEmail(to, content) {
-    console.log(`向 ${to} 发送邮件: ${content}`);
-  }
+    sendEmail(to: string, content: string) {
+        console.log(`向 ${to} 发送邮件: ${content}`);
+    }
 }
 
 // 使用示例
@@ -158,9 +153,9 @@ const reporter = new ReportGenerator();
 const emailService = new EmailService();
 
 const user = {
-  name: 'John',
-  email: 'john@example.com',
-  registerDate: '2024-03-27'
+    name: 'John',
+    email: 'john@example.com',
+    registerDate: '2024-03-27'
 };
 
 // 每个类都专注于自己的职责
@@ -183,19 +178,17 @@ console.log(reporter.generateUserReport(userManager.users));
 
 #### 反例
 
-```js
+```ts
 // prompt: 按用户维度，不使用开闭原则的例子，尽可能简单易懂
 // 用户管理类 - 负责用户管理、报表生成
 class UserManager {
-    constructor() {
-        this.users = [];
-    }
+    private users: { name: string; email: string; registerDate: string }[] = [];
 
-    addUser(user) {
+    addUser(user: { name: string; email: string; registerDate: string }) {
         this.users.push(user);
     }
 
-    getUserReport(type) {
+    getUserReport(type: string): string {
         if (type === 'basic') {
             return this.users.map(user => `用户: ${user.name}`).join('\n');
         } else if (type === 'detailed') {
@@ -221,40 +214,36 @@ console.log(userManager.getUserReport('detailed'));
 
 #### 正例
 
-```js
+```ts
 // prompt: 对照上面的例子，使用开闭原则的例子，尽可能简单易懂
 // 报表生成器接口
-class ReportGenerator {
-    generate(users) {
-        throw new Error('子类必须实现generate方法');
-    }
+abstract class ReportGenerator {
+    abstract generate(users: { name: string; email: string; registerDate: string }[]): string;
 }
 
 // 基本报表生成器
 class BasicReportGenerator extends ReportGenerator {
-    generate(users) {
+    generate(users: { name: string; email: string; registerDate: string }[]): string {
         return users.map(user => `用户: ${user.name}`).join('\n');
     }
 }
 
 // 详细报表生成器
 class DetailedReportGenerator extends ReportGenerator {
-    generate(users) {
+    generate(users: { name: string; email: string; registerDate: string }[]): string {
         return users.map(user => `用户: ${user.name}, 邮箱: ${user.email}, 注册时间: ${user.registerDate}`).join('\n');
     }
 }
 
 // 用户管理类
 class UserManager {
-    constructor() {
-        this.users = [];
-    }
+    private users: { name: string; email: string; registerDate: string }[] = [];
 
-    addUser(user) {
+    addUser(user: { name: string; email: string; registerDate: string }) {
         this.users.push(user);
     }
 
-    generateReport(generator) {
+    generateReport(generator: ReportGenerator): string {
         return generator.generate(this.users);
     }
 }
@@ -281,35 +270,31 @@ console.log(userManager.generateReport(detailedReport));
 
 #### 反例
 
-```js
+```ts
 // prompt: 按用户维度，不使用里氏替换原则的例子，尽可能简单易懂
 // 父类 - 用户
 class User {
-    constructor(name, email) {
-        this.name = name;
-        this.email = email;
-    }
+    constructor(public name: string, public email: string) {}
 
-    getDetails() {
+    getDetails(): string {
         return `用户: ${this.name}, 邮箱: ${this.email}`;
     }
 }
 
 // 子类 - 特殊用户
 class SpecialUser extends User {
-    constructor(name, email, discount) {
+    constructor(name: string, email: string, public discount: number) {
         super(name, email);
-        this.discount = discount;
     }
 
-    getDetails() {
+    getDetails(): string {
         // 子类改变了父类的行为
         return `特殊用户: ${this.name}, 邮箱: ${this.email}, 折扣: ${this.discount}%`;
     }
 }
 
 // 使用示例
-function printUserDetails(user) {
+function printUserDetails(user: User) {
     console.log(user.getDetails());
 }
 
@@ -326,34 +311,30 @@ printUserDetails(specialUser); // 输出: 特殊用户: Jane, 邮箱: jane@examp
 
 #### 正例
 
-```js
+```ts
 // prompt: 对照上面的例子，使用里氏替换原则的例子，尽可能简单易懂
 // 父类 - 用户
 class User {
-    constructor(name, email) {
-        this.name = name;
-        this.email = email;
-    }
+    constructor(public name: string, public email: string) {}
 
-    getDetails() {
+    getDetails(): string {
         return `用户: ${this.name}, 邮箱: ${this.email}`;
     }
 }
 
 // 子类 - 特殊用户
 class SpecialUser extends User {
-    constructor(name, email, discount) {
+    constructor(name: string, email: string, public discount: number) {
         super(name, email);
-        this.discount = discount;
     }
 
-    getSpecialDetails() {
+    getSpecialDetails(): string {
         return `${super.getDetails()}, 折扣: ${this.discount}%`;
     }
 }
 
 // 使用示例
-function printUserDetails(user) {
+function printUserDetails(user: User) {
     console.log(user.getDetails());
 }
 
@@ -374,43 +355,32 @@ printUserDetails(specialUser); // 输出: 用户: Jane, 邮箱: jane@example.com
 
 #### 反例
 
-```js
+```ts
 // prompt: 按用户维度，不使用接口隔离原则的例子，尽可能简单易懂
 // 一个胖接口，包含了所有用户相关的操作
-class UserOperations {
-    addUser(user) {
-        throw new Error('子类必须实现addUser方法');
-    }
-
-    deleteUser(userId) {
-        throw new Error('子类必须实现deleteUser方法');
-    }
-
-    generateReport() {
-        throw new Error('子类必须实现generateReport方法');
-    }
-
-    sendEmail(user, content) {
-        throw new Error('子类必须实现sendEmail方法');
-    }
+interface UserOperations {
+    addUser(user: { name: string }): void;
+    deleteUser(userId: string): void;
+    generateReport(): string;
+    sendEmail(user: { email: string }, content: string): void;
 }
 
 // 实现类 - 只需要部分功能，但必须实现整个接口
-class BasicUserManager extends UserOperations {
-    addUser(user) {
+class BasicUserManager implements UserOperations {
+    addUser(user: { name: string }): void {
         console.log(`添加用户: ${user.name}`);
     }
 
-    deleteUser(userId) {
+    deleteUser(userId: string): void {
         console.log(`删除用户ID: ${userId}`);
     }
 
-    generateReport() {
+    generateReport(): string {
         // 不需要此功能，但必须实现
         throw new Error('不支持生成报表');
     }
 
-    sendEmail(user, content) {
+    sendEmail(user: { email: string }, content: string): void {
         // 不需要此功能，但必须实现
         throw new Error('不支持发送邮件');
     }
@@ -428,38 +398,29 @@ userManager.addUser({ name: 'John' });
 
 #### 正例
 
-```js
+```ts
 // prompt: 对照上面的例子，使用接口隔离原则的例子，尽可能简单易懂
 // 将胖接口拆分为多个小接口
-class UserManagement {
-    addUser(user) {
-        throw new Error('子类必须实现addUser方法');
-    }
-
-    deleteUser(userId) {
-        throw new Error('子类必须实现deleteUser方法');
-    }
+interface UserManagement {
+    addUser(user: { name: string }): void;
+    deleteUser(userId: string): void;
 }
 
-class ReportGeneration {
-    generateReport() {
-        throw new Error('子类必须实现generateReport方法');
-    }
+interface ReportGeneration {
+    generateReport(): string;
 }
 
-class EmailService {
-    sendEmail(user, content) {
-        throw new Error('子类必须实现sendEmail方法');
-    }
+interface EmailService {
+    sendEmail(user: { email: string }, content: string): void;
 }
 
 // 实现类 - 只实现需要的接口
-class BasicUserManager extends UserManagement {
-    addUser(user) {
+class BasicUserManager implements UserManagement {
+    addUser(user: { name: string }): void {
         console.log(`添加用户: ${user.name}`);
     }
 
-    deleteUser(userId) {
+    deleteUser(userId: string): void {
         console.log(`删除用户ID: ${userId}`);
     }
 }
@@ -475,9 +436,4 @@ userManager.addUser({ name: 'John' });
 ```
 
 ### 依赖反转原则（DIP： Dependency Inversion Principle）
-
-
-
-
-
 
