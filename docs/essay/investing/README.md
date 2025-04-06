@@ -144,3 +144,9 @@ TODO
 5. \# of shares, risk, profit target, risk/reward ratio
 6. Review, what goes wrong, what goes right?
 
+## 经验
+
+- 坏行情来时，早点做止损，可以考虑买put
+- 波动行情，需注意对冲风险，避免追涨杀跌
+  - 卖put期权，如果行情不好，需尽早平仓
+  - 买正股，可夹带卖call期权
