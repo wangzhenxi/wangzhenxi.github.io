@@ -299,7 +299,13 @@ console.log(userManager.generateReport(detailedReport));
 
 ### 里氏替换原则（LSP： Liskov Substitution Principle）
 
+> 开闭原则的实现依赖于里氏替换原则。
+
 子类必须能够替换掉父类，并且程序的行为不变。也就是说，子类**可以扩展父类的功能**，但**不能改变父类原有的功能**。
+
+#### 如何满足里氏替换原则？
+
+- 基于契约设计（Design By Contract，DBC）： 可设定前置条件（入参的参数类型）和后置条件（函数的返回值），当子类实现时，前置条件不能比父类更严格，后置条件不能比父类更宽松。
 
 #### 反例
 
@@ -580,3 +586,7 @@ userManager.notifyUser('john@example.com', '欢迎注册!');
 - 编码时可以问下AI是否满足SOLID原则或者让他按照SOLID原则进行编码。
 ![](./image/2025-03-28-09-34-31.png)
 ![](./image/2025-03-28-09-35-39.png)
+
+## 知识衍生
+
+- [UML图的六种箭头](https://blog.csdn.net/ASCIIZUO/article/details/126638034)
