@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs"
   },
   "repository": {
     "type": "git",
