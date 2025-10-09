@@ -10,7 +10,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: vuepress-deploy
-      uses: intergiro/vuepress-deploy@fix_git_repo
+      uses: jenkey2011/vuepress-deploy@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: wangzhenxi/wangzhenxi.github.io
