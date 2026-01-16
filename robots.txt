@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https:/www.wangzhenxi.com/sitemap.xml
+Host: https://www.wangzhenxi.com
