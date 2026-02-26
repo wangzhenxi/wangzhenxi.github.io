@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress dev docs",
-    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" vuepress build docs"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
@@ -18,15 +19,7 @@
   },
   "homepage": "https://github.com/wangzhenxi/wangzhenxi.github.io#readme",
   "devDependencies": {
-    "markdown-it": "^13.0.1",
-    "markdown-it-meta": "^0.0.1",
-    "vuepress": "^1.9.10"
-  },
-  "dependencies": {
-    "@vssue/api-github-v3": "^1.4.7",
-    "@vssue/vuepress-plugin-vssue": "^1.4.8",
-    "vuepress-plugin-baidu-tongji-analytics": "^1.0.2",
-    "vuepress-plugin-robots": "^1.0.1",
-    "vuepress-plugin-sitemap": "^2.3.1"
+    "markdown-it-plantuml": "^1.4.1",
+    "vitepress": "^1.6.4"
   }
 }
