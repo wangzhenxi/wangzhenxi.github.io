@@ -1,0 +1,6 @@
+/* markmap 节点内图片尺寸限制 */
+.markmap-foreign img {
+  max-width: 200px;
+  max-height: 150px;
+  object-fit: contain;
+}

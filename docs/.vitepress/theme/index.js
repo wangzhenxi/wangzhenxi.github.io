@@ -1,6 +1,7 @@
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
 import Giscus from './Giscus.vue'
+import './custom.css'
 
 // GTM noscript 组件（注入 <body> 顶部）
 const GtmNoscript = {

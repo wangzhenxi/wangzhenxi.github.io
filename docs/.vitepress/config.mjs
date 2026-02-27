@@ -1,14 +1,12 @@
 import { defineConfig } from 'vitepress'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-import plantuml from 'markdown-it-plantuml'
+import markmapPlugin from '@vitepress-plugin/markmap'
 import { buildSidebar } from './sidebar.mjs'
 
 const docsPath = join(dirname(fileURLToPath(import.meta.url)), '..')
 
-const dirConfig = [
-  { name: 'notes', title: '笔记' },
-]
+const year = new Date().getFullYear();
 
 export default defineConfig({
   lang: 'zh-CN',
@@ -31,21 +29,25 @@ export default defineConfig({
     hostname: 'https://www.wangzhenxi.com',
   },
 
-  markdown: {
-    config: md => md.use(plantuml),
+  vite: {
+    plugins: [
+      markmapPlugin({ containerHeight: '100vh' }),
+    ],
   },
 
   themeConfig: {
     nav: [
       { text: '关于我',  link: '/' },
-      { text: '友情链接', link: '/friend/' },
       { text: '笔记',    link: '/notes/' },
+      { text: '友情链接', link: '/friend/' },
     ],
-    sidebar: buildSidebar(docsPath, dirConfig),
+    sidebar: buildSidebar(docsPath, [
+      { name: 'notes', title: '笔记' },
+    ]),
     socialLinks: [{ icon: 'github', link: 'https://github.com/wangzhenxi' }],
     footer: {
       message: '<a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备17064264号</a>',
-      copyright: 'Copyright © 2022 Joshwong',
+      copyright: `Copyright © ${year} Joshwong`,
     },
   },
 })
