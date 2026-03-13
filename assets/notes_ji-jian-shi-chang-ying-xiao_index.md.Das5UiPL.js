@@ -1,4 +1,4 @@
-import{_ as l,C as e,o as d,c as m,j as a,a as i,E as t,w as o}from"./chunks/framework.R7EdO4cN.js";const _=JSON.parse('{"title":"极简市场营销","description":"","frontmatter":{"title":"极简市场营销"},"headers":[],"relativePath":"notes/ji-jian-shi-chang-ying-xiao/index.md","filePath":"notes/ji-jian-shi-chang-ying-xiao/index.md"}'),p={name:"notes/ji-jian-shi-chang-ying-xiao/index.md"};function c(g,n,h,P,x,u){const r=e("markmap"),s=e("ClientOnly");return d(),m("div",null,[n[1]||(n[1]=a("h1",{id:"极简市场营销",tabindex:"-1"},[i("极简市场营销 "),a("a",{class:"header-anchor",href:"#极简市场营销","aria-label":'Permalink to "极简市场营销"'},"​")],-1)),n[2]||(n[2]=a("h2",{id:"思维导图",tabindex:"-1"},[i("思维导图 "),a("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),t(s,null,{default:o(()=>[t(r,{containerHeight:"100vh",id:"markmap-1772156931906-33nup3ewp"},{default:o(()=>[...n[0]||(n[0]=[a("pre",null,`# 极简市场营销
+import{_ as l,C as e,o as d,c as m,j as a,a as i,E as t,w as o}from"./chunks/framework.R7EdO4cN.js";const _=JSON.parse('{"title":"极简市场营销","description":"","frontmatter":{"title":"极简市场营销"},"headers":[],"relativePath":"notes/ji-jian-shi-chang-ying-xiao/index.md","filePath":"notes/ji-jian-shi-chang-ying-xiao/index.md"}'),c={name:"notes/ji-jian-shi-chang-ying-xiao/index.md"};function p(g,n,h,P,x,f){const r=e("markmap"),s=e("ClientOnly");return d(),m("div",null,[n[1]||(n[1]=a("h1",{id:"极简市场营销",tabindex:"-1"},[i("极简市场营销 "),a("a",{class:"header-anchor",href:"#极简市场营销","aria-label":'Permalink to "极简市场营销"'},"​")],-1)),n[2]||(n[2]=a("h2",{id:"思维导图",tabindex:"-1"},[i("思维导图 "),a("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),t(s,null,{default:o(()=>[t(r,{containerHeight:"100vh",id:"markmap-1773407794807-wilyzhoaj"},{default:o(()=>[...n[0]||(n[0]=[a("pre",null,`# 极简市场营销
 ## 目的
 - 了解市场营销完整生命周期
 - 思考如何做好市场营销
@@ -114,4 +114,4 @@ import{_ as l,C as e,o as d,c as m,j as a,a as i,E as t,w as o}from"./chunks/fra
 - 团队架构：10多个子团队，各种"工匠"聚集
 - 子团队和人数的变迁
 - 团队考核指标：三大指标、与销售团队"穿一条裤子"
-`,-1)])]),_:1})]),_:1})])}const y=l(p,[["render",c]]);export{_ as __pageData,y as default};
+`,-1)])]),_:1})]),_:1})])}const y=l(c,[["render",p]]);export{_ as __pageData,y as default};

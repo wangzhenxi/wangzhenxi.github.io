@@ -1,4 +1,4 @@
-import{_ as l,C as t,o as d,c as m,j as e,a,E as i,w as o}from"./chunks/framework.R7EdO4cN.js";const w=JSON.parse('{"title":"金字塔原理","description":"","frontmatter":{"title":"金字塔原理"},"headers":[],"relativePath":"notes/jin-zi-ta-yuan-li/index.md","filePath":"notes/jin-zi-ta-yuan-li/index.md"}'),p={name:"notes/jin-zi-ta-yuan-li/index.md"};function c(u,n,C,f,x,_){const r=t("markmap"),s=t("ClientOnly");return d(),m("div",null,[n[1]||(n[1]=e("h1",{id:"金字塔原理",tabindex:"-1"},[a("金字塔原理 "),e("a",{class:"header-anchor",href:"#金字塔原理","aria-label":'Permalink to "金字塔原理"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[a("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),i(s,null,{default:o(()=>[i(r,{containerHeight:"100vh",id:"markmap-1772156931919-0gwaex2k9"},{default:o(()=>[...n[0]||(n[0]=[e("pre",null,`# 金字塔原理
+import{_ as l,C as t,o as d,c as m,j as e,a,E as i,w as o}from"./chunks/framework.R7EdO4cN.js";const A=JSON.parse('{"title":"金字塔原理","description":"","frontmatter":{"title":"金字塔原理"},"headers":[],"relativePath":"notes/jin-zi-ta-yuan-li/index.md","filePath":"notes/jin-zi-ta-yuan-li/index.md"}'),p={name:"notes/jin-zi-ta-yuan-li/index.md"};function c(u,n,C,f,x,_){const r=t("markmap"),s=t("ClientOnly");return d(),m("div",null,[n[1]||(n[1]=e("h1",{id:"金字塔原理",tabindex:"-1"},[a("金字塔原理 "),e("a",{class:"header-anchor",href:"#金字塔原理","aria-label":'Permalink to "金字塔原理"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[a("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),i(s,null,{default:o(()=>[i(r,{containerHeight:"100vh",id:"markmap-1773407794820-sk4ootaax"},{default:o(()=>[...n[0]||(n[0]=[e("pre",null,`# 金字塔原理
 ## 序言的具体写法
 ### 序言的目的
 - 让读者抛开其他思想，专注于你的话题。
@@ -79,4 +79,4 @@ import{_ as l,C as t,o as d,c as m,j as e,a,E as i,w as o}from"./chunks/framewor
 ## 读书感受
 - 写好序言，有助于帮助读者以整体的视角去理解文章。在日常工作、跨团队协作中也可以运用到。
 - 我在以往的阅读中，比较习惯性跳过序言。看了这个章节后，明白了序言的作用，后续阅读过程中也会去看这块内容。
-`,-1)])]),_:1})]),_:1})])}const A=l(p,[["render",c]]);export{w as __pageData,A as default};
+`,-1)])]),_:1})]),_:1})])}const S=l(p,[["render",c]]);export{A as __pageData,S as default};

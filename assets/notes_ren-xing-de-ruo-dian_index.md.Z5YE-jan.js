@@ -1,4 +1,4 @@
-import{_ as s,C as a,o as l,c as m,j as e,a as t,E as r,w as o}from"./chunks/framework.R7EdO4cN.js";const b=JSON.parse('{"title":"人性的弱点","description":"","frontmatter":{"title":"人性的弱点"},"headers":[],"relativePath":"notes/ren-xing-de-ruo-dian/index.md","filePath":"notes/ren-xing-de-ruo-dian/index.md"}'),p={name:"notes/ren-xing-de-ruo-dian/index.md"};function c(x,n,f,u,_,h){const i=a("markmap"),d=a("ClientOnly");return l(),m("div",null,[n[1]||(n[1]=e("h1",{id:"人性的弱点",tabindex:"-1"},[t("人性的弱点 "),e("a",{class:"header-anchor",href:"#人性的弱点","aria-label":'Permalink to "人性的弱点"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[t("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),r(d,null,{default:o(()=>[r(i,{containerHeight:"100vh",id:"markmap-1772156932646-tm9xa7bll"},{default:o(()=>[...n[0]||(n[0]=[e("pre",null,`# 人性的弱点
+import{_ as d,C as a,o as l,c as m,j as e,a as t,E as r,w as o}from"./chunks/framework.R7EdO4cN.js";const g=JSON.parse('{"title":"人性的弱点","description":"","frontmatter":{"title":"人性的弱点"},"headers":[],"relativePath":"notes/ren-xing-de-ruo-dian/index.md","filePath":"notes/ren-xing-de-ruo-dian/index.md"}'),p={name:"notes/ren-xing-de-ruo-dian/index.md"};function c(x,n,u,f,_,h){const i=a("markmap"),s=a("ClientOnly");return l(),m("div",null,[n[1]||(n[1]=e("h1",{id:"人性的弱点",tabindex:"-1"},[t("人性的弱点 "),e("a",{class:"header-anchor",href:"#人性的弱点","aria-label":'Permalink to "人性的弱点"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[t("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),r(s,null,{default:o(()=>[r(i,{containerHeight:"100vh",id:"markmap-1773407795554-hkkupsw2s"},{default:o(()=>[...n[0]||(n[0]=[e("pre",null,`# 人性的弱点
 ## 背景
 ## 目的
 - 通过识别和避免人性弱点来赢得他人喜爱和尊重
@@ -111,4 +111,4 @@ import{_ as s,C as a,o as l,c as m,j as e,a as t,E as r,w as o}from"./chunks/fra
 - 女人眼中重要的事
 - 不要忽视这一点
 - 不要做"婚盲"
-`,-1)])]),_:1})]),_:1})])}const g=s(p,[["render",c]]);export{b as __pageData,g as default};
+`,-1)])]),_:1})]),_:1})])}const C=d(p,[["render",c]]);export{g as __pageData,C as default};

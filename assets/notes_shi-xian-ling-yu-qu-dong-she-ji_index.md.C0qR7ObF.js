@@ -1,4 +1,4 @@
-import{_ as p,C as a,o,c as r,j as e,a as i,E as t,w as g}from"./chunks/framework.R7EdO4cN.js";const _=JSON.parse('{"title":"实现领域驱动设计","description":"","frontmatter":{"title":"实现领域驱动设计"},"headers":[],"relativePath":"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md","filePath":"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md"}'),d={name:"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md"};function l(c,n,u,D,h,f){const m=a("markmap"),s=a("ClientOnly");return o(),r("div",null,[n[1]||(n[1]=e("h1",{id:"实现领域驱动设计",tabindex:"-1"},[i("实现领域驱动设计 "),e("a",{class:"header-anchor",href:"#实现领域驱动设计","aria-label":'Permalink to "实现领域驱动设计"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[i("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),t(s,null,{default:g(()=>[t(m,{containerHeight:"100vh",id:"markmap-1772156932697-djmk6mdzd"},{default:g(()=>[...n[0]||(n[0]=[e("pre",null,`# 实现领域驱动设计
+import{_ as m,C as a,o,c as r,j as e,a as i,E as t,w as g}from"./chunks/framework.R7EdO4cN.js";const _=JSON.parse('{"title":"实现领域驱动设计","description":"","frontmatter":{"title":"实现领域驱动设计"},"headers":[],"relativePath":"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md","filePath":"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md"}'),l={name:"notes/shi-xian-ling-yu-qu-dong-she-ji/index.md"};function d(c,n,u,D,f,h){const s=a("markmap"),p=a("ClientOnly");return o(),r("div",null,[n[1]||(n[1]=e("h1",{id:"实现领域驱动设计",tabindex:"-1"},[i("实现领域驱动设计 "),e("a",{class:"header-anchor",href:"#实现领域驱动设计","aria-label":'Permalink to "实现领域驱动设计"'},"​")],-1)),n[2]||(n[2]=e("h2",{id:"思维导图",tabindex:"-1"},[i("思维导图 "),e("a",{class:"header-anchor",href:"#思维导图","aria-label":'Permalink to "思维导图"'},"​")],-1)),t(p,null,{default:g(()=>[t(s,{containerHeight:"100vh",id:"markmap-1773407796089-4lf7axct0"},{default:g(()=>[...n[0]||(n[0]=[e("pre",null,`# 实现领域驱动设计
 ## 背景
 - 设计不只是感观，设计就是产品的工作方式。——Steve Jobs
 - 为什么需要DDD？
@@ -135,4 +135,4 @@ import{_ as p,C as a,o,c as r,j as e,a as i,E as t,w as g}from"./chunks/framewor
 ## 实践
 - 如何在项目中应用DDD
 - 如何做模型分离
-`,-1)])]),_:1})]),_:1})])}const k=p(d,[["render",l]]);export{_ as __pageData,k as default};
+`,-1)])]),_:1})]),_:1})])}const y=m(l,[["render",d]]);export{_ as __pageData,y as default};
