@@ -166,3 +166,32 @@
 @utility animate-card-enter {
   animation: card-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+/* 矮视口下压缩卡片间距，配合 h-dvh 布局保证内容完整可见且不出现滚动条 */
+@media (max-height: 560px) {
+  .card-fit header img {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  .card-fit header h1 {
+    margin-top: 1rem;
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+  }
+
+  .card-fit header p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .card-fit section {
+    margin-top: 2rem;
+  }
+
+  .card-fit section > div,
+  .card-fit section > a {
+    min-height: 4.5rem;
+  }
+}

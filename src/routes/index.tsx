@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Check, Copy, Github, QrCode, X } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Github, QrCode, X } from "lucide-react";
 import { toast } from "sonner";
 import { useEffect, useState } from "react";
 
@@ -68,10 +68,10 @@ function Index() {
   };
 
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-5 py-10 sm:px-8">
+    <main className="relative flex h-dvh items-center justify-center overflow-hidden bg-background px-5 py-10 sm:px-8">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-border" />
 
-      <article className="animate-card-enter relative w-full max-w-xl">
+      <article className="card-fit animate-card-enter relative w-full max-w-xl">
         <header className="flex flex-col items-center text-center">
           <img
             src={avatarUrl}
@@ -129,7 +129,7 @@ function Index() {
             href={profile.githubUrl}
             target="_blank"
             rel="noreferrer"
-            className="group flex min-h-20 items-center gap-4 py-4 outline-none transition-colors hover:text-muted-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+            className="group flex min-h-20 items-center gap-4 rounded-md py-4 outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary" aria-hidden="true">
               <Github size={20} strokeWidth={1.8} />
@@ -138,7 +138,12 @@ function Index() {
               <span className="block text-xs font-semibold uppercase text-muted-foreground">GitHub</span>
               <span className="mt-1 block truncate text-base font-semibold">{profile.githubLabel}</span>
             </span>
-            <span className="text-xl text-muted-foreground transition-transform group-hover:translate-x-1" aria-hidden="true">↗</span>
+            <span
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground transition-colors duration-200 group-hover:bg-accent"
+              aria-hidden="true"
+            >
+              <ArrowUpRight size={20} strokeWidth={1.8} />
+            </span>
           </a>
         </section>
       </article>
