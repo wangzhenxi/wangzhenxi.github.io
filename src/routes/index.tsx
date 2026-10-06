@@ -9,6 +9,8 @@ import qrUrl from "@/assets/joshwong-wechat-qr.jpg";
 import { Button } from "@/components/ui/button";
 import { copyWechatId, profile } from "@/lib/profile";
 
+const SITE_URL = "https://www.wangzhenxi.com";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -17,7 +19,30 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "joshwong — Developer" },
       { property: "og:description", content: "joshwong 的个人名片、GitHub 与微信联系方式。" },
       { property: "og:type", content: "profile" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:image", content: `${SITE_URL}${avatarUrl}` },
+      { property: "og:image:width", content: "1024" },
+      { property: "og:image:height", content: "1024" },
+      { property: "og:image:alt", content: "joshwong 的头像" },
+      { property: "og:site_name", content: "joshwong" },
+      { property: "og:locale", content: "zh_CN" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${SITE_URL}${avatarUrl}` },
+    ],
+    links: [{ rel: "canonical", href: SITE_URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: profile.name,
+          jobTitle: "Developer",
+          url: SITE_URL,
+          image: `${SITE_URL}${avatarUrl}`,
+          sameAs: [profile.githubUrl],
+        }),
+      },
     ],
   }),
   component: Index,
